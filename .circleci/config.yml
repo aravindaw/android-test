@@ -33,9 +33,9 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: sudo chmod +x ./gradle
+      #- run: sudo chmod +x ./gradle
+      - run: sudo chmod +x ./gradlew
       - run: gradle dependencies
-      #- run: sudo chmod +x ./gradlew
       #- run: ./gradlew androidDepedencies    
       - run: ./gradlew assembleRelease
         

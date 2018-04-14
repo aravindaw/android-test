@@ -49,5 +49,5 @@ jobs:
       
       - run: ./gradlew -PciBuild=true :mobile:assembleDebug :mobile:assembleAndroidTest
       - store_artifacts:
-          path: mobile/build/outputs/apk/
+          path: app/build/outputs/apk/
           destination: /apk/

@@ -48,7 +48,6 @@ jobs:
       - run: ./gradlew test
      
   test_unit:
-    <<: *android_config
     steps:
       - checkout
       - *restore_cache

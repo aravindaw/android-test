@@ -25,14 +25,7 @@ jobs:
     
     steps:
       - checkout
-      
-        # Google Services
-      - run: echo 'export GOOGLE_SERVICES_KEY="$GOOGLE_SERVICES_KEY"' >> $BASH_ENV
-      - run: echo $GOOGLE_SERVICES_KEY | base64 -di > app/google-services.json
-
-        # Google Cloud Service
-      - run: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
-      - run: echo $GCLOUD_SERVICE_KEY | base64 -di > client-secret.json
+      - run: echo "['4/AAADT1rjl80GwOgGFlHVKIMavZRNOhw4ThD5fRaO5Z94bBsl45uw8m8']" > client-secret.json
 
       # Download and cache dependencies
       - restore_cache:

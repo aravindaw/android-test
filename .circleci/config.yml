@@ -54,8 +54,6 @@ jobs:
           destination: /apk/
       
       #deploy and test
-      - run: echo "y" | sudo pip uninstall crcmod
-      - run: Install crcmod
       - run: bundle exec fastlane instrumentation_tests_testlab
       - run: mkdir firebase
       - run: gsutil -m cp -r -U "`gsutil ls gs://test-lab-3udbiqpdyp0d0-miwcp7d69v80m | tail -1`*" /root/workspace/firebase/

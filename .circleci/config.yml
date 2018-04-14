@@ -35,8 +35,8 @@ jobs:
 
       #- run: sudo chmod +x ./gradle
       - run: sudo chmod +x ./gradlew
-      - run: gradle dependencies
-      #- run: ./gradlew androidDepedencies    
+      #- run: gradle dependencies
+      - run: ./gradlew androidDepedencies    
       - run: ./gradlew assembleRelease
         
       - save_cache:

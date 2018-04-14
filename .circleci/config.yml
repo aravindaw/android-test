@@ -31,11 +31,12 @@ jobs:
           - v1-dependencies-{{ checksum "build.gradle" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
+          key: 
+          - jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
       - run: sudo chmod +x ./gradle
 
-      #- run: gradle dependencies
-      - run: gradle androidDependencies
+      - run: gradle dependencies
         
       - save_cache:
           paths:
@@ -44,6 +45,3 @@ jobs:
         
       # run tests!
       - run: gradle test
-
-
-

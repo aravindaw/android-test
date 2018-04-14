@@ -3,8 +3,8 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
-references:
-
+    
+jobs:
   # Google Services
   export_gservices_key: &export_gservices_key
     run: echo 'export GOOGLE_SERVICES_KEY="$GOOGLE_SERVICES_KEY"' >> $BASH_ENV
@@ -16,8 +16,7 @@ references:
     run: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
   decode_gcloud_key: &decode_gcloud_key
     run: echo $GCLOUD_SERVICE_KEY | base64 -di > client-secret.json
-    
-jobs:
+
   build:
     docker:
       # specify the version you desire here

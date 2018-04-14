@@ -46,15 +46,6 @@ jobs:
         
       # run tests!
       - run: ./gradlew test
-     
-  build_debug:
-    steps:
-      - checkout
-      - restore_cache
-      - run: ./gradlew androidDependencies
-      - save_cache
-      - export_gservices_key
-      - decode_gservices_key
       - run: ./gradlew -PciBuild=true :mobile:assembleDebug :mobile:assembleAndroidTest
       - persist_debug_workspace
       - store_artifacts:

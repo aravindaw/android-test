@@ -56,7 +56,7 @@ jobs:
       #deploy and test
       - run: gcloud config set project newspaper-84169
       - run: gcloud auth login
-      - run: gcloud auth activate-service-account aravindaweerasekara@gmail.com --key 4/AAB3oBOMGWov1xTrDwbdmiE5deTO40mwJFNMsCBDgptzhcF7tCb_rEM
+      - run: gcloud auth activate-service-account aravindaweerasekara@gmail.com --key-file ${HOME}/client-secret.json
 #      - run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk --device model=sailfish,version=26,locale=en_US,orientation=portrait --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 20m
       - run: mkdir firebase
       - run: gsutil -m cp -r -U "`gsutil ls gs://test-lab-3udbiqpdyp0d0-miwcp7d69v80m | tail -1`*" /root/workspace/firebase/

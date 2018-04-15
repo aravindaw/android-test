@@ -4,14 +4,14 @@
 #
 version: 2
     
-references:
+#references:
   # Google Services
   # run: echo 'export GOOGLE_SERVICES_KEY="$GOOGLE_SERVICES_KEY"' >> $BASH_ENV
   # run: echo $GOOGLE_SERVICES_KEY | base64 -di > app/google-services.json
 
   # Google Cloud Service
-    run: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
-    run: echo $GCLOUD_SERVICE_KEY | base64 -di > ${HOME}/client-secret.json
+  # run: echo 'export GCLOUD_SERVICE_KEY="$GCLOUD_SERVICE_KEY"' >> $BASH_ENV
+  # run: echo $GCLOUD_SERVICE_KEY | base64 -di > app/build/client-secret.json
       
       
 jobs:
@@ -64,11 +64,7 @@ jobs:
           destination: /apk/
       
       #deploy and test
-      - run: gcloud config set project newspaper-84169
-      - run: gcloud auth activate-service-account firebase-adminsdk-p9qvk@newspaper-84169.iam.gserviceaccount.com --key-file ${HOME}/client-secret.json
-      - run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/mobile-debug.apk --device model=sailfish,version=26,locale=en_US,orientation=portrait --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 20m
-      - run: mkdir firebase
-      - run: gsutil -m cp -r -U "`gsutil ls gs://test-lab-3udbiqpdyp0d0-miwcp7d69v80m | tail -1`*" /root/workspace/firebase/
-      - store_artifacts:
-          path: firebase/
-          destination: /firebase/
+      - run: gcloud config set project android-test-91a52
+      - run: gcloud auth activate-service-account firebase-adminsdk-tdp7k@android-test-91a52.iam.gserviceaccount.com --key-file app/android-test-91a52-firebase-adminsdk-tdp7k-6a47676a0c.json
+      #- run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/mobile-debug.apk --device model=sailfish,version=26,locale=en_US,orientation=portrait --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 20m
+      - run: gcloud firebase test android run --type instrumentation --app app/build/outputs/apk/debug/app-debug.apk --test app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk --device model=sailfish,version=26,locale=en_US,orientation=portrait --environment-variables coverage=true,coverageFile=/sdcard/tmp/code-coverage/connected/coverage.ec --directories-to-pull=/sdcard/tmp --timeout 20m

@@ -4,6 +4,8 @@ import android.support.test.InstrumentationRegistry;
 
 import com.mytaxi.android_demo.R;
 
+import java.util.logging.Logger;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
@@ -12,6 +14,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 public class Login {
+    private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Login.class);
+
     public Login(String userName, String password) {
         InstrumentationRegistry.getTargetContext();
 
@@ -21,7 +25,7 @@ public class Login {
         try {
             Thread.sleep(4000);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.info("[{}]", e);
         }
     }
 }

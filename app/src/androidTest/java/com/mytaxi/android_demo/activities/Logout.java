@@ -14,12 +14,13 @@ import static android.support.test.espresso.matcher.ViewMatchers.withEffectiveVi
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 public class Logout {
+    private static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(Logout.class);
     public Logout() {
         try {
             onView(withContentDescription(R.string.navigation_drawer_open)).check(matches(isDisplayed())).perform(click());
             onView(withText("Logout")).perform(click());
         } catch (NoMatchingViewException e) {
-            e.printStackTrace();
+            log.info("[{}]", e);
         }
     }
 }

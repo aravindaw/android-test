@@ -12,13 +12,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.logging.Logger;
-
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityTest {
-    static Logger log = Logger.getLogger(MainActivityTest.class.getName());
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);

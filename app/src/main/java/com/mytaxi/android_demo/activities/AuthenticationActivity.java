@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mytaxi.android_demo.App;
 import com.mytaxi.android_demo.R;
@@ -79,6 +80,13 @@ public class AuthenticationActivity extends AppCompatActivity {
                     View view = findViewById(android.R.id.content);
                     Snackbar.make(view, R.string.message_login_fail, Snackbar.LENGTH_LONG).show();
                     Log.i(LOG_TAG, "Failed login with user: " + username);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplication(), "Login Failed . please try again", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         });
